@@ -7,6 +7,9 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+import { Message } from "element-ui";
+
+
 import 'normalize.css/normalize.css'
 import '@/styles/index.scss' // global css
 
@@ -16,6 +19,7 @@ import store from './store'
 
 import '@/permission' 
 
+Vue.prototype.$message=Message
 
 Vue.use(ElementUI)
 
