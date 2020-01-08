@@ -52,9 +52,6 @@ const actions = {
           if (response && response.success) {
             const { data } = response;
             const { roles, name } = data;
-            if (!roles || roles.length <= 0) {
-              reject("该用户没有角色");
-            }
             commit("SET_ROLES", roles);
             commit("SET_NAME", name);
             // commit("SET_AVATAR", avatar);

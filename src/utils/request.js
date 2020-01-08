@@ -1,6 +1,6 @@
 import axios from "axios";
 import router from "../router";
-import { MessageBox, Message } from "element-ui";
+import { MessageBox, Message, Alert } from "element-ui";
 import store from "@/store";
 
 axios.defaults.timeout = 5000;
@@ -25,9 +25,7 @@ axios.interceptors.response.use(
     return response;
   },
   function (error) {
-    // 对响应错误做点什么s
-    console.log("err==>" + error);
-    console.log(error.response);
+    // 对响应错误做点什么
     if (error.response) {
       if (error.response.status == 401) {
         store.dispatch("user/removeToken").then(s => {
@@ -55,4 +53,13 @@ export const httpGet = (url, data) => {
 
 export const httpPost = (url, data) => {
   return axios.post(url, data).then(res => res.data);
+};
+export const httpPut = (url, data) => {
+  return axios.put(url, data).then(res => res.data);
+};
+export const httpPatch = (url, data) => {
+  return axios.patch(url, data).then(res => res.data);
+};
+export const httpDelete = (url, data) => {
+  return axios.delete(url,  { params: data }).then(res => res.data);
 };
